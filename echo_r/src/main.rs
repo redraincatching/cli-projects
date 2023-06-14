@@ -33,5 +33,6 @@ fn main() {
     let omit_newline = matches.is_present("omit_newline");  // saves option as boolean
     let text = matches.values_of_lossy("text").unwrap();    // we can use unwrap without fearing a panic, because the app will error if the argument doesn't exist
 
-    print!("{}{}", text.join(" "), if omit_newline { " " } else { "\n" }); // using Vec::join to concat the Strings
+    print!("{}{}", text.join(" "), if omit_newline { "" } else { "\r\n" }); // using Vec::join to concat the Strings
+    // note the use of carriage return, because windows is a special little snowflake
 }
